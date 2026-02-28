@@ -118,7 +118,7 @@ export default function Navbar() {
                 ))}
                 <a
                   href={`tel:${CONTACT.cell}`}
-                  className="flex items-center gap-2 bg-warm-gold text-white px-6 py-3 text-sm tracking-[1.5px] uppercase hover:bg-deep-gold transition-colors duration-300 shadow-md hover:shadow-lg ml-auto"
+                  className="flex items-center gap-2 bg-warm-gold text-white px-6 py-3 text-sm tracking-[1.5px] uppercase hover:bg-deep-gold transition-colors duration-300 shadow-md hover:shadow-lg ml-auto rounded-full"
                 >
                   <Phone size={15} />
                   {CONTACT.cell}
@@ -163,7 +163,7 @@ export default function Navbar() {
             <div className="mt-auto pb-12 space-y-4">
               <a
                 href={`tel:${CONTACT.cell}`}
-                className="flex items-center justify-center gap-2 bg-warm-gold text-white py-4 text-lg tracking-[1px] uppercase hover:bg-deep-gold transition-colors shadow-md"
+                className="flex items-center justify-center gap-2 bg-warm-gold text-white py-4 text-lg tracking-[1px] uppercase hover:bg-deep-gold transition-colors shadow-md rounded-full"
               >
                 <Phone size={18} />
                 {CONTACT.cell}

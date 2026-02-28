@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: url('/images/realty-background.png') center/cover fixed no-repeat;
   color: var(--color-charcoal);
   font-family: var(--font-body), sans-serif;
 }
@@ -43,7 +43,14 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-warm-gold);
 }
 
-/* Form focus styles */
+/* Soft, feminine form styling */
+input, textarea, select {
+  border-radius: 9999px;
+}
+textarea {
+  border-radius: 1rem;
+}
+
 input:focus, textarea:focus, select:focus {
   outline: 2px solid var(--color-warm-gold);
   outline-offset: 1px;

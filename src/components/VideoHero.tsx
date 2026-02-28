@@ -24,7 +24,7 @@ export default function VideoHero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
 
       {/* Content — pushed up from center so scroll arrow has clear space */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 pb-28">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 pb-40">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,33 +71,33 @@ export default function VideoHero() {
             href={CONTACT.searchUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-4 bg-warm-gold text-white text-sm tracking-[2px] uppercase hover:bg-deep-gold transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="px-10 py-4 bg-warm-gold text-white text-sm tracking-[2px] uppercase hover:bg-deep-gold transition-all duration-300 shadow-lg hover:shadow-xl rounded-full"
           >
             Search Properties
           </a>
           <Link
             href="/contact"
-            className="px-10 py-4 border-2 border-white/50 text-white text-sm tracking-[2px] uppercase hover:bg-white/15 hover:border-white transition-all duration-300"
+            className="px-10 py-4 border-2 border-white/50 text-white text-sm tracking-[2px] uppercase hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full"
           >
             Contact Me
           </Link>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator — well below content */}
+      {/* Scroll Indicator — positioned above the action card overlap zone */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-1"
         >
           <span className="text-white/50 text-[10px] tracking-[3px] uppercase">Scroll</span>
-          <ChevronDown size={24} className="text-white/50" />
+          <ChevronDown size={22} className="text-white/50" />
         </motion.div>
       </motion.div>
     </section>

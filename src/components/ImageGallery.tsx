@@ -11,26 +11,28 @@ const images = [
 
 export default function ImageGallery() {
   return (
-    <div className="grid grid-cols-3 gap-0">
-      {images.map((img, i) => (
-        <motion.div
-          key={img.src}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: i * 0.15 }}
-          className="relative aspect-[4/3] overflow-hidden group"
-        >
-          <Image
-            src={img.src}
-            alt={img.alt}
-            fill
-            className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
-            sizes="33vw"
-          />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
-        </motion.div>
-      ))}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <div className="rounded-lg overflow-hidden shadow-xl grid grid-cols-3 gap-0">
+        {images.map((img, i) => (
+          <motion.div
+            key={img.src}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.15 }}
+            className="relative aspect-[4/3] overflow-hidden group"
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+              sizes="33vw"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }

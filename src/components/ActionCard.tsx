@@ -17,7 +17,7 @@ export default function ActionCard({ icon: Icon, label, href, external }: Props)
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       whileHover={{ y: -6 }}
-      className="group flex flex-col items-center gap-3 p-6 bg-white border border-light-gray hover:border-warm-gold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+      className="group flex flex-col items-center gap-3 p-6 bg-white/90 backdrop-blur-sm border border-light-gray hover:border-warm-gold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer rounded-2xl"
     >
       <div className="w-14 h-14 rounded-full border-2 border-warm-gold flex items-center justify-center group-hover:bg-warm-gold transition-colors duration-300">
         <Icon

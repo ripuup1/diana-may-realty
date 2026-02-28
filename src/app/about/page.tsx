@@ -18,40 +18,30 @@ export default function AboutPage() {
   const paragraphs = BIO_TEXT.split("\n\n");
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/diana-hero-3.jpg"
-          alt="Diana May"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
-        <div className="relative z-10 text-center px-4">
-          <AnimateOnScroll>
-            <p className="text-warm-gold text-sm tracking-[4px] uppercase mb-4">
-              Get to Know
-            </p>
-            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-white">
-              About Diana May
-            </h1>
-          </AnimateOnScroll>
-        </div>
-      </section>
+    <div className="pt-32 pb-16">
+      {/* Page Title */}
+      <div className="text-center mb-12 px-4">
+        <AnimateOnScroll>
+          <p className="text-warm-gold text-sm tracking-[4px] uppercase mb-4">
+            Get to Know
+          </p>
+          <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-charcoal">
+            About Diana May
+          </h1>
+          <div className="w-20 h-[2px] bg-warm-gold mx-auto mt-6" />
+        </AnimateOnScroll>
+      </div>
 
-      {/* Bio Section */}
-      <section className="py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Bio Section — floating card */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8 sm:p-12 lg:p-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <AnimateOnScroll>
               <div className="relative">
-                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-warm-gold" />
-                <div className="relative aspect-[3/4] overflow-hidden">
+                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-warm-gold rounded" />
+                <div className="relative aspect-[3/4] overflow-hidden rounded">
                   <Image
-                    src="/images/diana-bio.jpg"
+                    src="/images/diana-hero-1.jpg"
                     alt="Diana May - dedicated listing specialist"
                     fill
                     className="object-cover object-top"
@@ -81,16 +71,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Image Gallery */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Image Gallery — floating card */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8 sm:p-12">
           <AnimateOnScroll>
             <SectionHeading title="In Action" />
           </AnimateOnScroll>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {galleryImages.map((img, i) => (
               <AnimateOnScroll key={img.src} delay={i * 0.1}>
-                <div className="relative aspect-square overflow-hidden group">
+                <div className="relative aspect-square overflow-hidden rounded group">
                   <Image
                     src={img.src}
                     alt={img.alt}
@@ -105,12 +95,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-24 bg-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Team Section — floating card */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="bg-charcoal shadow-xl rounded-lg p-8 sm:p-12 lg:p-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll>
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden rounded">
                 <Image
                   src="/images/diana-team.jpg"
                   alt="The Diana May Real Estate Team"
@@ -136,9 +126,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Service Area */}
-      <section className="py-20 bg-ivory">
-        <div className="max-w-3xl mx-auto px-4 text-center">
+      {/* Service Area — floating card */}
+      <section className="max-w-3xl mx-auto px-4 mb-8">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-12 text-center">
           <AnimateOnScroll>
             <MapPin size={40} className="text-warm-gold mx-auto mb-6" />
             <h2 className="font-heading text-3xl sm:text-4xl text-charcoal mb-4">
@@ -149,7 +139,7 @@ export default function AboutPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-block px-8 py-3.5 bg-warm-gold text-white text-sm tracking-[2px] uppercase hover:bg-deep-gold transition-colors duration-300"
+              className="inline-block px-8 py-3.5 bg-warm-gold text-white text-sm tracking-[2px] uppercase hover:bg-deep-gold transition-colors duration-300 shadow-md"
             >
               <Phone size={14} className="inline mr-2" />
               Get In Touch
@@ -157,6 +147,6 @@ export default function AboutPage() {
           </AnimateOnScroll>
         </div>
       </section>
-    </>
+    </div>
   );
 }

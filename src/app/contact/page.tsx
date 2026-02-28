@@ -8,37 +8,27 @@ import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/diana-hero-2.jpg"
-          alt="Contact Diana May"
-          fill
-          className="object-cover object-top"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
-        <div className="relative z-10 text-center px-4">
-          <AnimateOnScroll>
-            <p className="text-warm-gold text-sm tracking-[4px] uppercase mb-4">
-              Let&apos;s Connect
-            </p>
-            <h1 className="font-heading text-5xl sm:text-6xl text-white">
-              Contact Me
-            </h1>
-          </AnimateOnScroll>
-        </div>
-      </section>
+    <div className="pt-32 pb-16">
+      {/* Page Title */}
+      <div className="text-center mb-12 px-4">
+        <AnimateOnScroll>
+          <p className="text-warm-gold text-sm tracking-[4px] uppercase mb-4">
+            Let&apos;s Connect
+          </p>
+          <h1 className="font-heading text-5xl sm:text-6xl text-charcoal">
+            Contact Me
+          </h1>
+          <div className="w-20 h-[2px] bg-warm-gold mx-auto mt-6" />
+        </AnimateOnScroll>
+      </div>
 
-      {/* Contact Content */}
-      <section className="py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Contact Content — floating card */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8 sm:p-12 lg:p-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Form */}
             <AnimateOnScroll>
-              <div className="bg-white p-8 sm:p-12 border border-light-gray">
+              <div>
                 <h2 className="font-heading text-3xl text-charcoal mb-2">
                   Send a Message
                 </h2>
@@ -51,7 +41,7 @@ export default function ContactPage() {
             <AnimateOnScroll delay={0.2}>
               <div className="space-y-8">
                 {/* Profile Image */}
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden rounded">
                   <Image
                     src="/images/diana-contact-bio.jpg"
                     alt="Diana May REALTOR"
@@ -61,8 +51,8 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {/* Info Cards */}
-                <div className="bg-white p-8 border border-light-gray space-y-6">
+                {/* Info Card */}
+                <div className="bg-cream/80 p-8 rounded border border-light-gray space-y-6">
                   <div className="flex items-center gap-4">
                     <Image
                       src="/images/diana-profile-circle.png"
@@ -141,7 +131,7 @@ export default function ContactPage() {
                     href={CONTACT.searchUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 bg-warm-gold text-white text-sm tracking-[1px] uppercase hover:bg-deep-gold transition-colors"
+                    className="flex items-center justify-center gap-2 w-full py-3 bg-warm-gold text-white text-sm tracking-[1px] uppercase hover:bg-deep-gold transition-colors rounded shadow-md"
                   >
                     Search Properties
                     <ExternalLink size={14} />
@@ -152,6 +142,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

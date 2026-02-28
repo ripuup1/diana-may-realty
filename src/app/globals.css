@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #FAF7F2;
+  --color-ivory: #F5F0E8;
+  --color-charcoal: #2C2C2C;
+  --color-warm-gold: #C9A96E;
+  --color-deep-gold: #B8935A;
+  --color-soft-taupe: #D4C5B2;
+  --color-light-gray: #E8E4DE;
+  --color-navy: #1B2A4A;
+
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-raleway);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-body), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-soft-taupe);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-gold);
+}
+
+/* Form focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--color-warm-gold);
+  outline-offset: 1px;
+}

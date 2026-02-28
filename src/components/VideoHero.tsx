@@ -1,15 +1,28 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { CONTACT } from "@/lib/constants";
 
 export default function VideoHero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Force play for mobile browsers that don't autoplay despite attributes
+    video.play().catch(() => {
+      // Autoplay blocked — poster image will show as fallback
+    });
+  }, []);
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop

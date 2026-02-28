@@ -25,7 +25,7 @@ export default function AboutPage() {
           src="/images/diana-hero-3.jpg"
           alt="Diana May"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
           sizes="100vw"
         />
@@ -54,7 +54,7 @@ export default function AboutPage() {
                     src="/images/diana-bio.jpg"
                     alt="Diana May - dedicated listing specialist"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width: 768px) 50vw, 25vw"
                   />
                 </div>
@@ -115,7 +115,7 @@ export default function AboutPage() {
                   src="/images/diana-team.jpg"
                   alt="The Diana May Real Estate Team"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>

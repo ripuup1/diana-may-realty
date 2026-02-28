@@ -11,7 +11,7 @@ const images = [
 
 export default function ImageGallery() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+    <div className="grid grid-cols-3 gap-0">
       {images.map((img, i) => (
         <motion.div
           key={img.src}
@@ -25,8 +25,8 @@ export default function ImageGallery() {
             src={img.src}
             alt={img.alt}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+            sizes="33vw"
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
         </motion.div>

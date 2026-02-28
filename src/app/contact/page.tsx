@@ -15,7 +15,7 @@ export default function ContactPage() {
           src="/images/diana-hero-2.jpg"
           alt="Contact Diana May"
           fill
-          className="object-cover"
+          className="object-cover object-top"
           priority
           sizes="100vw"
         />
@@ -56,7 +56,7 @@ export default function ContactPage() {
                     src="/images/diana-contact-bio.jpg"
                     alt="Diana May REALTOR"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>

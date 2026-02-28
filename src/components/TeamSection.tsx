@@ -54,7 +54,7 @@ export default function TeamSection() {
                 src="/images/diana-team.jpg"
                 alt="The Diana May Real Estate Team"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

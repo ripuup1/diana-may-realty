@@ -19,7 +19,7 @@ const actions = [
 
 export default function ActionCards() {
   return (
-    <section className="relative -mt-12 z-20 px-4">
+    <section className="relative -mt-14 z-20 px-4">
       <AnimateOnScroll>
         <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           {actions.map((action) => (

@@ -4,8 +4,20 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Menu, X } from "lucide-react";
-import { NAV_LINKS, CONTACT } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
+
+const LEFT_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+];
+
+const RIGHT_LINKS = [
+  { label: "Alerts", href: "/#alerts" },
+  { label: "Contact", href: "/contact" },
+];
+
+const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,6 +37,10 @@ export default function Navbar() {
     }
   }, [mobileOpen]);
 
+  const linkClass = `relative text-base tracking-[2.5px] uppercase transition-colors duration-300 hover:text-warm-gold after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-warm-gold after:transition-all after:duration-300 hover:after:w-full ${
+    scrolled ? "text-charcoal" : "text-white"
+  }`;
+
   return (
     <>
       <nav
@@ -35,62 +51,79 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="flex-shrink-0">
-              <Image
-                src="/images/diana-may-team-logo.png"
-                alt="Diana May Realty Team"
-                width={180}
-                height={60}
-                className="h-12 w-auto"
-                priority
-              />
-            </Link>
+          <div className="flex items-center justify-between h-24 lg:h-28">
 
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm tracking-[2px] uppercase transition-colors duration-300 hover:text-warm-gold ${
-                    scrolled ? "text-charcoal" : "text-white"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <a
-                href={CONTACT.searchUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`text-sm tracking-[2px] uppercase transition-colors duration-300 hover:text-warm-gold ${
-                  scrolled ? "text-charcoal" : "text-white"
-                }`}
-              >
-                Search
-              </a>
-            </div>
-
-            {/* CTA + Mobile Toggle */}
-            <div className="flex items-center gap-4">
-              <a
-                href={`tel:${CONTACT.cell}`}
-                className="hidden sm:flex items-center gap-2 bg-warm-gold text-white px-5 py-2.5 text-sm tracking-[1px] uppercase hover:bg-deep-gold transition-colors duration-300"
-              >
-                <Phone size={14} />
-                {CONTACT.cell}
-              </a>
+            {/* Mobile: Logo left + hamburger right */}
+            <div className="flex lg:hidden items-center justify-between w-full">
+              <Link href="/" className="flex-shrink-0">
+                <Image
+                  src="/images/diana-may-team-logo.png"
+                  alt="Diana May Realty Team"
+                  width={200}
+                  height={70}
+                  className="h-14 w-auto"
+                  priority
+                />
+              </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className={`md:hidden p-2 transition-colors ${
+                className={`p-2 transition-colors ${
                   scrolled ? "text-charcoal" : "text-white"
                 }`}
                 aria-label="Toggle menu"
               >
-                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+                {mobileOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
+            </div>
+
+            {/* Desktop: Left links | Center logo | Right links */}
+            <div className="hidden lg:flex items-center justify-between w-full">
+              {/* Left Links */}
+              <div className="flex items-center gap-10 flex-1 justify-end pr-12">
+                {LEFT_LINKS.map((link) => (
+                  <Link key={link.href} href={link.href} className={linkClass}>
+                    {link.label}
+                  </Link>
+                ))}
+                <a
+                  href={CONTACT.searchUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  Search
+                </a>
+              </div>
+
+              {/* Center Logo */}
+              <Link href="/" className="flex-shrink-0">
+                <Image
+                  src="/images/diana-may-team-logo.png"
+                  alt="Diana May Realty Team"
+                  width={280}
+                  height={90}
+                  className={`w-auto transition-all duration-500 ${
+                    scrolled ? "h-16" : "h-20"
+                  }`}
+                  priority
+                />
+              </Link>
+
+              {/* Right Links */}
+              <div className="flex items-center gap-10 flex-1 justify-start pl-12">
+                {RIGHT_LINKS.map((link) => (
+                  <Link key={link.href} href={link.href} className={linkClass}>
+                    {link.label}
+                  </Link>
+                ))}
+                <a
+                  href={`tel:${CONTACT.cell}`}
+                  className="flex items-center gap-2 bg-warm-gold text-white px-6 py-3 text-sm tracking-[1.5px] uppercase hover:bg-deep-gold transition-colors duration-300 shadow-md hover:shadow-lg ml-auto"
+                >
+                  <Phone size={15} />
+                  {CONTACT.cell}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -104,15 +137,15 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white flex flex-col pt-24 px-8"
+            className="fixed inset-0 z-40 bg-white flex flex-col pt-28 px-8"
           >
-            <div className="flex flex-col gap-6">
-              {NAV_LINKS.map((link) => (
+            <div className="flex flex-col gap-7">
+              {ALL_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-heading text-charcoal tracking-[2px] uppercase hover:text-warm-gold transition-colors"
+                  className="text-2xl font-heading text-charcoal tracking-[3px] uppercase hover:text-warm-gold transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -122,7 +155,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="text-2xl font-heading text-charcoal tracking-[2px] uppercase hover:text-warm-gold transition-colors"
+                className="text-2xl font-heading text-charcoal tracking-[3px] uppercase hover:text-warm-gold transition-colors"
               >
                 Search Properties
               </a>
@@ -130,7 +163,7 @@ export default function Navbar() {
             <div className="mt-auto pb-12 space-y-4">
               <a
                 href={`tel:${CONTACT.cell}`}
-                className="flex items-center justify-center gap-2 bg-warm-gold text-white py-4 text-lg tracking-[1px] uppercase hover:bg-deep-gold transition-colors"
+                className="flex items-center justify-center gap-2 bg-warm-gold text-white py-4 text-lg tracking-[1px] uppercase hover:bg-deep-gold transition-colors shadow-md"
               >
                 <Phone size={18} />
                 {CONTACT.cell}

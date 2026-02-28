@@ -21,7 +21,7 @@ export default function AboutSection() {
                   src="/images/diana-bio.jpg"
                   alt="Diana May - REALTOR and listing specialist"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>

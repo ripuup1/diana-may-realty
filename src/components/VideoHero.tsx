@@ -12,21 +12,44 @@ export default function VideoHero() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    // Force play for mobile browsers that don't autoplay despite attributes
-    video.play().catch(() => {
-      // Autoplay blocked — poster image will show as fallback
-    });
+
+    // React doesn't always set muted as a DOM property (iOS requires it)
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // Autoplay blocked — poster image will show as fallback
+      });
+    };
+
+    // Try immediately
+    tryPlay();
+
+    // Also retry when video data is ready (handles slow mobile connections)
+    video.addEventListener("loadeddata", tryPlay);
+    // And on canplay for extra coverage
+    video.addEventListener("canplay", tryPlay);
+
+    return () => {
+      video.removeEventListener("loadeddata", tryPlay);
+      video.removeEventListener("canplay", tryPlay);
+    };
   }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
         poster="/images/diana-hero-1.jpg"
       >

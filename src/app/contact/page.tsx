@@ -8,38 +8,38 @@ import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 sm:pt-32 pb-12 sm:pb-16">
       {/* Page Title */}
-      <div className="text-center mb-12 px-4">
+      <div className="text-center mb-8 sm:mb-12 px-4">
         <AnimateOnScroll>
-          <p className="text-warm-gold text-sm tracking-[4px] uppercase mb-4">
+          <p className="text-warm-gold text-xs sm:text-sm tracking-[3px] sm:tracking-[4px] uppercase mb-3 sm:mb-4">
             Let&apos;s Connect
           </p>
-          <h1 className="font-heading text-5xl sm:text-6xl text-charcoal">
+          <h1 className="font-heading text-4xl sm:text-6xl text-charcoal">
             Contact Me
           </h1>
-          <div className="w-20 h-[2px] bg-warm-gold mx-auto mt-6" />
+          <div className="w-16 sm:w-20 h-[2px] bg-warm-gold mx-auto mt-5 sm:mt-6" />
         </AnimateOnScroll>
       </div>
 
       {/* Contact Content — floating card */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8 sm:p-12 lg:p-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-5 sm:p-12 lg:p-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
             {/* Form */}
             <AnimateOnScroll>
               <div>
-                <h2 className="font-heading text-3xl text-charcoal mb-2">
+                <h2 className="font-heading text-2xl sm:text-3xl text-charcoal mb-2">
                   Send a Message
                 </h2>
-                <div className="w-12 h-[2px] bg-warm-gold mb-8" />
+                <div className="w-12 h-[2px] bg-warm-gold mb-6 sm:mb-8" />
                 <ContactForm />
               </div>
             </AnimateOnScroll>
 
             {/* Contact Info */}
             <AnimateOnScroll delay={0.2}>
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                 {/* Profile Image */}
                 <div className="relative aspect-[4/3] overflow-hidden rounded">
                   <Image
@@ -52,26 +52,26 @@ export default function ContactPage() {
                 </div>
 
                 {/* Info Card */}
-                <div className="bg-cream/80 p-8 rounded border border-light-gray space-y-6">
-                  <div className="flex items-center gap-4">
+                <div className="bg-cream/80 p-5 sm:p-8 rounded border border-light-gray space-y-5 sm:space-y-6">
+                  <div className="flex items-center gap-3 sm:gap-4">
                     <Image
                       src="/images/diana-profile-circle.png"
                       alt="Diana May"
                       width={64}
                       height={64}
-                      className="w-16 h-16 rounded-full object-cover"
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover flex-shrink-0"
                     />
-                    <div>
-                      <h3 className="font-heading text-xl text-charcoal">
+                    <div className="min-w-0">
+                      <h3 className="font-heading text-lg sm:text-xl text-charcoal">
                         {CONTACT.name}
                       </h3>
-                      <p className="text-sm text-charcoal/60">
+                      <p className="text-xs sm:text-sm text-charcoal/60 truncate">
                         {CONTACT.title} | {CONTACT.brokerage}
                       </p>
                     </div>
                   </div>
 
-                  <div className="space-y-4 pt-4 border-t border-light-gray">
+                  <div className="space-y-4 pt-4 border-t border-light-gray text-sm sm:text-base">
                     <a
                       href={`tel:${CONTACT.cell}`}
                       className="flex items-center gap-3 text-charcoal/70 hover:text-warm-gold transition-colors"
@@ -99,9 +99,9 @@ export default function ContactPage() {
                       className="flex items-center gap-3 text-charcoal/70 hover:text-warm-gold transition-colors"
                     >
                       <Mail size={18} className="text-warm-gold flex-shrink-0" />
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-xs text-charcoal/50 uppercase tracking-wide">Email</p>
-                        <p>{CONTACT.email}</p>
+                        <p className="break-all">{CONTACT.email}</p>
                       </div>
                     </a>
 
@@ -131,7 +131,7 @@ export default function ContactPage() {
                     href={CONTACT.searchUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 bg-warm-gold text-white text-sm tracking-[1px] uppercase hover:bg-deep-gold transition-colors rounded shadow-md"
+                    className="flex items-center justify-center gap-2 w-full py-3.5 bg-warm-gold text-white text-sm tracking-[1px] uppercase hover:bg-deep-gold transition-colors rounded-full shadow-md"
                   >
                     Search Properties
                     <ExternalLink size={14} />

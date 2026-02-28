@@ -8,7 +8,7 @@ export default function AlertsSection() {
   return (
     <section id="alerts" className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl p-8 sm:p-12 lg:p-16">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl p-5 sm:p-12 lg:p-16">
           <AnimateOnScroll>
             <SectionHeading
               title="Get Alerts"

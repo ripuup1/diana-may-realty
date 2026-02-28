@@ -51,7 +51,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24 lg:h-28">
+          <div className="flex items-center justify-between h-20 sm:h-24 lg:h-28">
 
             {/* Mobile: Logo left + hamburger right */}
             <div className="flex lg:hidden items-center justify-between w-full">
@@ -61,7 +61,7 @@ export default function Navbar() {
                   alt="Diana May Realty Team"
                   width={200}
                   height={70}
-                  className="h-14 w-auto"
+                  className="h-11 sm:h-14 w-auto"
                   priority
                 />
               </Link>
@@ -137,15 +137,15 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white flex flex-col pt-28 px-8"
+            className="fixed inset-0 z-40 bg-white flex flex-col pt-24 sm:pt-28 px-6 sm:px-8"
           >
-            <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-6">
               {ALL_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-heading text-charcoal tracking-[3px] uppercase hover:text-warm-gold transition-colors"
+                  className="text-xl font-heading text-charcoal tracking-[3px] uppercase hover:text-warm-gold active:text-warm-gold transition-colors py-1"
                 >
                   {link.label}
                 </Link>
@@ -155,22 +155,22 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="text-2xl font-heading text-charcoal tracking-[3px] uppercase hover:text-warm-gold transition-colors"
+                className="text-xl font-heading text-charcoal tracking-[3px] uppercase hover:text-warm-gold active:text-warm-gold transition-colors py-1"
               >
                 Search Properties
               </a>
             </div>
-            <div className="mt-auto pb-12 space-y-4">
+            <div className="mt-auto pb-10 space-y-3">
               <a
                 href={`tel:${CONTACT.cell}`}
-                className="flex items-center justify-center gap-2 bg-warm-gold text-white py-4 text-lg tracking-[1px] uppercase hover:bg-deep-gold transition-colors shadow-md rounded-full"
+                className="flex items-center justify-center gap-2 bg-warm-gold text-white py-4 text-base tracking-[1px] uppercase hover:bg-deep-gold active:bg-deep-gold transition-colors shadow-md rounded-full"
               >
                 <Phone size={18} />
                 {CONTACT.cell}
               </a>
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="block text-center text-charcoal/70 text-sm"
+                className="block text-center text-charcoal/70 text-sm py-2"
               >
                 {CONTACT.email}
               </a>

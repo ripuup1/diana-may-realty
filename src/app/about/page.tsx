@@ -18,27 +18,27 @@ export default function AboutPage() {
   const paragraphs = BIO_TEXT.split("\n\n");
 
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-28 sm:pt-32 pb-12 sm:pb-16">
       {/* Page Title */}
-      <div className="text-center mb-12 px-4">
+      <div className="text-center mb-8 sm:mb-12 px-4">
         <AnimateOnScroll>
-          <p className="text-warm-gold text-sm tracking-[4px] uppercase mb-4">
+          <p className="text-warm-gold text-xs sm:text-sm tracking-[3px] sm:tracking-[4px] uppercase mb-3 sm:mb-4">
             Get to Know
           </p>
-          <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-charcoal">
+          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl text-charcoal">
             About Diana May
           </h1>
-          <div className="w-20 h-[2px] bg-warm-gold mx-auto mt-6" />
+          <div className="w-16 sm:w-20 h-[2px] bg-warm-gold mx-auto mt-5 sm:mt-6" />
         </AnimateOnScroll>
       </div>
 
       {/* Bio Section — floating card */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8 sm:p-12 lg:p-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-5 sm:p-12 lg:p-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-start">
             <AnimateOnScroll>
-              <div className="relative">
-                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-warm-gold rounded" />
+              <div className="relative mr-4 mb-4">
+                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-warm-gold rounded hidden sm:block" />
                 <div className="relative aspect-[3/4] overflow-hidden rounded">
                   <Image
                     src="/images/diana-hero-1.jpg"
@@ -56,11 +56,11 @@ export default function AboutPage() {
                 <p className="text-warm-gold text-sm tracking-[3px] uppercase mb-3">
                   {CONTACT.title} | {CONTACT.brokerage}
                 </p>
-                <h2 className="font-heading text-4xl text-charcoal mb-8">
+                <h2 className="font-heading text-3xl sm:text-4xl text-charcoal mb-6 sm:mb-8">
                   A Passion for Real Estate
                 </h2>
-                <div className="w-12 h-[2px] bg-warm-gold mb-8" />
-                <div className="space-y-5 text-charcoal/70 leading-relaxed">
+                <div className="w-12 h-[2px] bg-warm-gold mb-6 sm:mb-8" />
+                <div className="space-y-4 sm:space-y-5 text-charcoal/70 leading-relaxed text-sm sm:text-base">
                   {paragraphs.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
@@ -73,11 +73,11 @@ export default function AboutPage() {
 
       {/* Image Gallery — floating card */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-8 sm:p-12">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-5 sm:p-12">
           <AnimateOnScroll>
             <SectionHeading title="In Action" />
           </AnimateOnScroll>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {galleryImages.map((img, i) => (
               <AnimateOnScroll key={img.src} delay={i * 0.1}>
                 <div className="relative aspect-square overflow-hidden rounded group">
@@ -97,8 +97,8 @@ export default function AboutPage() {
 
       {/* Team Section — floating card */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="bg-charcoal shadow-xl rounded-lg p-8 sm:p-12 lg:p-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="bg-charcoal shadow-xl rounded-lg p-5 sm:p-12 lg:p-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
             <AnimateOnScroll>
               <div className="relative aspect-[4/3] overflow-hidden rounded">
                 <Image
@@ -115,11 +115,11 @@ export default function AboutPage() {
                 <p className="text-warm-gold text-sm tracking-[3px] uppercase mb-3">
                   The Team
                 </p>
-                <h2 className="font-heading text-4xl text-white mb-8">
+                <h2 className="font-heading text-3xl sm:text-4xl text-white mb-6 sm:mb-8">
                   {CONTACT.teamName}
                 </h2>
-                <div className="w-12 h-[2px] bg-warm-gold mb-8" />
-                <p className="text-white/70 leading-relaxed">{TEAM_TEXT}</p>
+                <div className="w-12 h-[2px] bg-warm-gold mb-6 sm:mb-8" />
+                <p className="text-white/70 leading-relaxed text-sm sm:text-base">{TEAM_TEXT}</p>
               </div>
             </AnimateOnScroll>
           </div>
@@ -128,18 +128,18 @@ export default function AboutPage() {
 
       {/* Service Area — floating card */}
       <section className="max-w-3xl mx-auto px-4 mb-8">
-        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-12 text-center">
+        <div className="bg-white/90 backdrop-blur-sm shadow-xl rounded-lg p-6 sm:p-12 text-center">
           <AnimateOnScroll>
-            <MapPin size={40} className="text-warm-gold mx-auto mb-6" />
-            <h2 className="font-heading text-3xl sm:text-4xl text-charcoal mb-4">
+            <MapPin size={36} className="text-warm-gold mx-auto mb-4 sm:mb-6" />
+            <h2 className="font-heading text-2xl sm:text-4xl text-charcoal mb-3 sm:mb-4">
               Servicing the Triangle Area
             </h2>
-            <p className="text-charcoal/60 text-lg mb-8">
+            <p className="text-charcoal/60 text-base sm:text-lg mb-6 sm:mb-8 px-2">
               Proudly serving clients across {CONTACT.serviceArea}
             </p>
             <Link
               href="/contact"
-              className="inline-block px-8 py-3.5 bg-warm-gold text-white text-sm tracking-[2px] uppercase hover:bg-deep-gold transition-colors duration-300 shadow-md"
+              className="inline-block px-8 py-3.5 bg-warm-gold text-white text-sm tracking-[2px] uppercase hover:bg-deep-gold transition-colors duration-300 shadow-md rounded-full"
             >
               <Phone size={14} className="inline mr-2" />
               Get In Touch

@@ -8,8 +8,8 @@ import { Phone, Mail, MapPin } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-charcoal text-white/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
           {/* Brand Column */}
           <div className="space-y-6">
             <Image
@@ -90,7 +90,7 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-3 text-white/60 hover:text-warm-gold transition-colors"
+                className="flex items-center gap-3 text-white/60 hover:text-warm-gold transition-colors break-all"
               >
                 <Mail size={16} className="text-warm-gold flex-shrink-0" />
                 {CONTACT.email}

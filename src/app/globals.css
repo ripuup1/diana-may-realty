@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background: url('/images/realty-background.png') center/cover fixed no-repeat;
+  background: url('/images/realty-background.jpg') center/cover fixed no-repeat;
   color: var(--color-charcoal);
   font-family: var(--font-body), sans-serif;
 }

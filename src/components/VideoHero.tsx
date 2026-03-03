@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
@@ -8,6 +8,14 @@ import { CONTACT } from "@/lib/constants";
 
 export default function VideoHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile by screen width (matches Tailwind's sm breakpoint)
+    const mobile = window.innerWidth < 640;
+    setIsMobile(mobile);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -19,42 +27,79 @@ export default function VideoHero() {
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
 
+    let playAttempts = 0;
+    const maxAttempts = 3;
+
     const tryPlay = () => {
+      if (playAttempts >= maxAttempts) {
+        setVideoFailed(true);
+        return;
+      }
+      playAttempts++;
+
       video.play().catch(() => {
-        // Autoplay blocked — poster image will show as fallback
+        if (playAttempts >= maxAttempts) {
+          // Autoplay truly blocked — fall back to Ken Burns poster
+          setVideoFailed(true);
+        }
       });
     };
 
     // Try immediately
     tryPlay();
 
-    // Also retry when video data is ready (handles slow mobile connections)
-    video.addEventListener("loadeddata", tryPlay);
-    // And on canplay for extra coverage
-    video.addEventListener("canplay", tryPlay);
+    // Retry when video data is ready
+    const onLoaded = () => tryPlay();
+    video.addEventListener("loadeddata", onLoaded);
+    video.addEventListener("canplay", onLoaded);
+
+    // Final fallback: if video hasn't started playing after 4s, give up
+    const timeout = setTimeout(() => {
+      if (video.paused) {
+        setVideoFailed(true);
+      }
+    }, 4000);
 
     return () => {
-      video.removeEventListener("loadeddata", tryPlay);
-      video.removeEventListener("canplay", tryPlay);
+      video.removeEventListener("loadeddata", onLoaded);
+      video.removeEventListener("canplay", onLoaded);
+      clearTimeout(timeout);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Video Background */}
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
-        poster="/images/diana-hero-1.jpg"
+      {/* Ken Burns fallback — always rendered behind video, visible when video fails */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-1000 ${
+          videoFailed ? "opacity-100" : "opacity-0"
+        }`}
       >
-        <source src="/video/hero-bg.mp4" type="video/mp4" />
-      </video>
+        <div
+          className="absolute inset-0 bg-cover bg-center animate-ken-burns"
+          style={{ backgroundImage: "url('/images/diana-hero-1.jpg')" }}
+        />
+      </div>
+
+      {/* Video Background — hidden when autoplay fails */}
+      {!videoFailed && (
+        // eslint-disable-next-line jsx-a11y/media-has-caption
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/images/diana-hero-1.jpg"
+        >
+          <source
+            src={isMobile ? "/video/hero-bg-mobile.mp4" : "/video/hero-bg.mp4"}
+            type="video/mp4"
+          />
+        </video>
+      )}
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />

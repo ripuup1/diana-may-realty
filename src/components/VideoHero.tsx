@@ -69,14 +69,14 @@ export default function VideoHero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Ken Burns fallback — always rendered behind video, visible when video fails */}
+      {/* Static image fallback — shown behind video, fades in when autoplay fails */}
       <div
         className={`absolute inset-0 transition-opacity duration-1000 ${
           videoFailed ? "opacity-100" : "opacity-0"
         }`}
       >
         <div
-          className="absolute inset-0 bg-cover bg-center animate-ken-burns"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/diana-hero-1.jpg')" }}
         />
       </div>

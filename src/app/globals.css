@@ -51,23 +51,6 @@ textarea {
   border-radius: 1rem;
 }
 
-/* Ken Burns slow zoom animation for video fallback */
-@keyframes ken-burns {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.12);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.animate-ken-burns {
-  animation: ken-burns 20s ease-in-out infinite;
-}
-
 input:focus, textarea:focus, select:focus {
   outline: 2px solid var(--color-warm-gold);
   outline-offset: 1px;
